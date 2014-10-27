@@ -1,7 +1,7 @@
 " Path to the bundle folder
-let vimsettings_bundlepath = "BUNDLE_PATH"
+let vimsettings_bundlepath = "~/.vim/bundle"
 " Git username of vim-settings
-let vimsettings_username = "USERNAME"
+let vimsettings_username = "monolar"
 
 " Vundle setup
 exec ":set runtimepath+=" . vimsettings_bundlepath . "/vundle/"
@@ -11,11 +11,19 @@ Plugin 'gmarik/vundle'
 " Include vim-settings
 Plugin vimsettings_username . '/vim-settings'
 
-" Load vim-settings.vim and tie it to $VIMSETTINGS
+" Load vim-plugins.vim and tie it to $VIMSETTINGS
+" Load plugins first
+let $VIMPLUGINS = vimsettings_bundlepath . "/vim-settings/vim-plugins.vim"
+if filereadable(glob($VIMPLUGINS))
+  exec ":so " . $VIMPLUGINS
+  call vundle#end()
+endif
+
+" Load vim-settings.vim then - this allows plugins to be setup properly.
+" This e.g. fixes issues with color-schemes (e.g. flazz/vim-colorschemes)
 let $VIMSETTINGS = vimsettings_bundlepath . "/vim-settings/vim-settings.vim"
 if filereadable(glob($VIMSETTINGS))
   exec ":so " . $VIMSETTINGS
-  call vundle#end()
 endif
 
 " vim-settings init helper
