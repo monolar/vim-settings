@@ -258,3 +258,159 @@ let g:bufferline_echo = 0
 let g:indent_guides_auto_colors = 1
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Buffer/Tab Shortcuts
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Go to next buffer
+nnoremap gb :bnext<cr>
+
+" Go to previous buffer
+nnoremap gB :bprevious<cr>
+
+" New buffer in current area
+nnoremap <leader>ee :enew<cr>
+
+" New buffer in split
+nnoremap <leader>es :new<cr>
+
+" New buffer in vertical split
+nnoremap <leader>ev :vnew<cr>
+
+" Remove the current buffer
+nnoremap <leader>bd :bprevious<cr>:bdelete #<cr>
+
+" Remove the current buffer with override
+nnoremap <leader>bD :bprevious<cr>:bdelete! #<cr>
+
+" Split current file
+nnoremap <leader>bs :split<cr>
+
+" Vertical split current file
+nnoremap <leader>bv :vsplit<cr>
+
+" Show buffer list
+nnoremap <leader>bl :ls<cr>
+
+" Create new tab
+nnoremap <c-t> :tabnew<cr>
+
+" Go to next tab
+nnoremap <a-]> :tabn<cr>
+
+" Go to previous tab
+nnoremap <a-[> :tabp<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" View Shortcuts
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Go to split below
+nnoremap <c-j> <c-w>j
+
+" Go to split above
+nnoremap <c-k> <c-w>k
+
+" Go to split left
+nnoremap <c-h> <c-w>h
+
+" Go to split right
+nnoremap <c-l> <c-w>l
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Movement Shortcuts
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Make H and L go to beginning and end of line
+noremap H ^
+noremap L $
+vnoremap L g_
+
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Misc Shortcuts
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turn off search highlight
+nnoremap ? :noh<cr>
+
+" Toggle spell check
+nnoremap <leader>sc :setlocal spell!<cr>
+
+" Remove trailing whitespace
+nnoremap <leader>xt :let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:noh<cr>:echo "Trailing whitespace removed"<cr>
+
+" Sort lines alphabetically
+nnoremap <leader>sl :sort i<cr>
+vnoremap <leader>sl :sort i<cr>
+
+" Sort lines numerically
+nnoremap <leader>sn :sort n<cr>
+vnoremap <leader>sn :sort n<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Indent Switch
+"
+" Helps switch between space and tab indentation
+"
+" <leader>it        - toggle indentation method
+" <leader>i<tab>    - switch to tab indentation
+" <leader>i<space>  - switch to space indentation
+" <leader>is        - show current indentation method
+" <leader>ir        - reindent the file using current indentation method
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if !exists("g:indentswitch_indent")
+  let g:indentswitch_indent = "spaces"
+endif
+
+function! s:Ispaces()
+  let g:indentswitch_indent = "spaces"
+  set expandtab
+  set smarttab
+  echo "Space Indentation"
+endfunction
+
+function! s:Itabs()
+  let g:indentswitch_indent = "tabs"
+  set noexpandtab
+  set nosmarttab
+  echo "Tab Indentation"
+endfunction
+
+function! s:Itoggle()
+  if g:indentswitch_indent == "tabs"
+    call s:Ispaces()
+  else
+    call s:Itabs()
+  endif
+endfunction
+
+function! s:Ishow()
+  if g:indentswitch_indent == "tabs"
+    echo "Tab Indentation"
+  else
+    echo "Space Indentation"
+  endif
+endfunction
+
+if g:indentswitch_indent == "tabs"
+  set noexpandtab
+  set nosmarttab
+else
+  set expandtab
+  set smarttab
+endif
+
+command! -bar -nargs=0 Itoggle call s:Itoggle()
+command! -bar -nargs=0 Itabs call s:Itabs()
+command! -bar -nargs=0 Ispaces call s:Ispaces()
+command! -bar -nargs=0 Ishow call s:Ishow()
+
+nnoremap <leader>it :Itoggle<cr>
+nnoremap <leader>i<tab> :Itabs<cr>
+nnoremap <leader>i<space> :Ispaces<cr>
+nnoremap <leader>is :Ishow<cr>
+nnoremap <leader>ir gg=G
+
+
