@@ -50,6 +50,14 @@ Plugin 'tpope/vim-dispatch'
 " Advanced Autocompletio without getting in the way
 Plugin 'Valloric/YouCompleteMe'
 
+" Play nice with tmux
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'edkolev/tmuxline.vim'
+
+" ctags in a vim drawer
+Plugin 'majutsushi/tagbar'
+
+
 """"""""""""""""""
 " Language plugins
 """"""""""""""""""

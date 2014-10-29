@@ -51,6 +51,9 @@ let g:airline#extensions#tabline#enabled=1
 " Airline only show filename in tabline
 let g:airline#extensions#tabline#fnamemod=":t"
 
+" Tagbar keyboard shortcut
+nmap <F8> :TagbarToggle<CR>
+
 """""""""""""""""
 " Plugin Options
 """""""""""""""""
