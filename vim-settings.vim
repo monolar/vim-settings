@@ -222,6 +222,7 @@ set smarttab
 " Disable any bells
 set noerrorbells
 set novisualbell
+set vb t_vb=
 
 " Autoindent
 set autoindent
