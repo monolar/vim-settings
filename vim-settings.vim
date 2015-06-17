@@ -36,13 +36,17 @@ set t_Co=256
 " Highlight current line
 set cul
 
+" Visible whitespaces
+set list
+set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
+
 """"""""""""""""""""""""""""
 " Interface plugin settings
 """"""""""""""""""""""""""""
 
 " Airline autopopulate symbols
 " if has("gui_running")
-  let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts=1
 " end
 
 " Airline smarter tabline
@@ -53,6 +57,29 @@ let g:airline#extensions#tabline#fnamemod=":t"
 
 " Tagbar keyboard shortcut
 nmap <F8> :TagbarToggle<CR>
+
+" Rainbow Parentheses
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
 
 """""""""""""""""
 " Plugin Options
@@ -264,6 +291,8 @@ let g:indent_guides_auto_colors = 1
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 
+highlight NonText ctermfg=8 guifg=gray
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Buffer/Tab Shortcuts
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -416,5 +445,3 @@ nnoremap <leader>i<tab> :Itabs<cr>
 nnoremap <leader>i<space> :Ispaces<cr>
 nnoremap <leader>is :Ishow<cr>
 nnoremap <leader>ir gg=G
-
-

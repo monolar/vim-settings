@@ -54,9 +54,14 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'edkolev/tmuxline.vim'
 
+" Airline line bash prompt generator
+Plugin 'edkolev/promptline.vim'
+
 " ctags in a vim drawer
 Plugin 'majutsushi/tagbar'
 
+" Dash integration
+Plugin 'rizzatti/dash.vim'
 
 """"""""""""""""""
 " Language plugins
@@ -86,6 +91,18 @@ Plugin 'kchmck/vim-coffee-script'
 
 " Haml, Sass, SCSS
 Plugin 'tpope/vim-haml'
+
+" Nimrod
+Plugin 'zah/nimrod.vim'
+
+" JSON
+Plugin 'elzr/vim-json'
+
+" Puppet
+Plugin 'rodjek/vim-puppet'
+
+" Rainbow Parentheses
+Plugin 'kien/rainbow_parentheses.vim'
 
 """""""""""""""
 " Color plugins
