@@ -6,7 +6,7 @@ let vimsettings_username = "monolar"
 " Vundle setup
 exec ":set runtimepath+=" . vimsettings_bundlepath . "/vundle/"
 call vundle#begin(vimsettings_bundlepath)
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " Include vim-settings
 Plugin vimsettings_username . '/vim-settings'
